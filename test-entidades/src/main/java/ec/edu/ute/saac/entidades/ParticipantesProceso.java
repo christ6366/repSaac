@@ -26,16 +26,20 @@ public class ParticipantesProceso implements Serializable {
     @Basic(optional = false)
     @Column(name = "par_pro_codigo", nullable = false)
     private Integer parProCodigo;
+    
     @Basic(optional = false)
     @Column(name = "par_pro_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date parProFecha;
+    
     @JoinColumn(name = "proceso", referencedColumnName = "prc_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Proceso proceso;
+    
     @JoinColumn(name = "persona", referencedColumnName = "per_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona persona;
+    
     @JoinColumn(name = "comite", referencedColumnName = "com_codigo")
     @ManyToOne(fetch = FetchType.LAZY)
     private Comite comite;

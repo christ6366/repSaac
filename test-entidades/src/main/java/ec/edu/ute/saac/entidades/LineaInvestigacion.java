@@ -31,18 +31,23 @@ public class LineaInvestigacion implements Serializable {
     @Basic(optional = false)
     @Column(name = "lin_inv_codigo", nullable = false)
     private Integer linInvCodigo;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "lin_inv_nombre", nullable = false, length = 255)
     private String linInvNombre;
+    
     @Size(max = 255)
     @Column(name = "lin_inv_descripcion", length = 255)
     private String linInvDescripcion;
+    
     @Basic(optional = false)
     @Column(name = "lin_inv_estado", nullable = false)
     private boolean linInvEstado;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lineaInvestigacion", fetch = FetchType.LAZY)
     private List<AreaInvestigacion> areaInvestigacionList;
+    
     @JoinColumn(name = "carrera", referencedColumnName = "car_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Carrera carrera;

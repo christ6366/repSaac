@@ -6,16 +6,13 @@ package ec.edu.ute.saac.entidades;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
-/**
- *
- * @author JNK
- */
 @Entity
-@Table(name = "facultad", catalog = "saac", schema = "", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"fac_codigo"})})
+@Table(name="facultad",catalog="saac",schema="",uniqueConstraints = {
+	    @UniqueConstraint(columnNames = {"fac_codigo"})})
 @NamedQueries({
     @NamedQuery(name = "Facultad.findAll", query = "SELECT f FROM Facultad f"),
     @NamedQuery(name = "Facultad.findByFacCodigo", query = "SELECT f FROM Facultad f WHERE f.facCodigo = :facCodigo"),
@@ -28,15 +25,19 @@ public class Facultad implements Serializable {
     @Basic(optional = false)
     @Column(name = "fac_codigo", nullable = false)
     private Integer facCodigo;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "fac_nombre", nullable = false, length = 255)
     private String facNombre;
+    
     @Basic(optional = false)
     @Column(name = "fac_estado", nullable = false)
     private boolean facEstado;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "facultad", fetch = FetchType.LAZY)
     private List<PersonaFacultad> personaFacultadList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "facultad", fetch = FetchType.LAZY)
     private List<Carrera> carreraList;
 

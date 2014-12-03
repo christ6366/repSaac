@@ -44,20 +44,25 @@ public class Cargo implements Serializable {
     @NotNull
     @Column(name = "crg_codigo", nullable = false)
     private Integer crgCodigo;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "crg_nombre", nullable = false, length = 255)
     private String crgNombre;
+    
     @Size(max = 255)
     @Column(name = "crg_descripcion", length = 255)
     private String crgDescripcion;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "crg_estado", nullable = false)
     private boolean crgEstado;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cargo", fetch = FetchType.LAZY)
     private List<PersonaCarrera> personaCarreraList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cargo", fetch = FetchType.LAZY)
     private List<PersonaFacultad> personaFacultadList;
 

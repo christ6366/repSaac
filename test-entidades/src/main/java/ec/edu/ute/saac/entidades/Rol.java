@@ -29,16 +29,20 @@ public class Rol implements Serializable {
     @Basic(optional = false)
     @Column(name = "rol_codigo", nullable = false)
     private Integer rolCodigo;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "rol_nombre", nullable = false, length = 255)
     private String rolNombre;
+    
     @Size(max = 255)
     @Column(name = "rol_descripcion", length = 255)
     private String rolDescripcion;
+    
     @Basic(optional = false)
     @Column(name = "rol_estado", nullable = false)
     private boolean rolEstado;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rol", fetch = FetchType.LAZY)
     private List<UsuarioRol> usuarioRolList;
 

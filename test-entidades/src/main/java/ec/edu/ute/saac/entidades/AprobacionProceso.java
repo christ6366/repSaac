@@ -22,18 +22,22 @@ import javax.persistence.*;
     @NamedQuery(name = "AprobacionProceso.findByPersona", query = "SELECT a FROM AprobacionProceso a WHERE a.persona = :persona")})
 public class AprobacionProceso implements Serializable {
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "apr_prc_codigo", nullable = false)
     private Integer aprPrcCodigo;
+    
     @Basic(optional = false)
     @Column(name = "apr_prc_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date aprPrcFecha;
+    
     @Basic(optional = false)
     @Column(name = "persona", nullable = false)
     private int persona;
+    
     @JoinColumn(name = "proceso", referencedColumnName = "prc_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Proceso proceso;

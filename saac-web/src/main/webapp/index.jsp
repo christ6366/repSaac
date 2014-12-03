@@ -1,5 +1,8 @@
 <html>
+<head></head>
 <body>
-<h2>Hello World!</h2>
+	<jsp:forward page="uno.jsf"></jsp:forward>
+
 </body>
+
 </html>

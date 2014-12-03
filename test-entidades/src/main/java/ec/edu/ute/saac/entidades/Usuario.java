@@ -31,38 +31,40 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-
     @Column(name = "usu_codigo", nullable = false)
     private Integer usuCodigo;
+    
     @Basic(optional = false)
-
     @Size(min = 1, max = 255)
     @Column(name = "usu_ute_login", nullable = false, length = 255)
     private String usuUteLogin;
+    
     @Basic(optional = false)
-
     @Size(min = 1, max = 255)
     @Column(name = "usu_user_name", nullable = false, length = 255)
     private String usuUserName;
+    
     @Basic(optional = false)
-
     @Size(min = 1, max = 255)
     @Column(name = "usu_password", nullable = false, length = 255)
     private String usuPassword;
-    @Basic(optional = false)
 
+    @Basic(optional = false)
     @Column(name = "usu_fch_registro", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuFchRegistro;
+    
     @Basic(optional = false)
-
     @Column(name = "usu_estado", nullable = false)
     private boolean usuEstado;
+    
     @JoinColumn(name = "persona", referencedColumnName = "per_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona persona;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<UsuarioRol> usuarioRolList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<PasswordHistorico> passwordHistoricoList;
 

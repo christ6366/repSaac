@@ -37,75 +37,100 @@ public class Persona implements Serializable {
     @Basic(optional = false)
     @Column(name = "per_codigo", nullable = false)
     private Integer perCodigo;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 50)
     @Column(name = "per_documento_identidad", nullable = false, length = 50)
     private String perDocumentoIdentidad;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 45)
     @Column(name = "per_nombre", nullable = false, length = 45)
     private String perNombre;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 45)
     @Column(name = "per_apellido", nullable = false, length = 45)
     private String perApellido;
+    
     @Basic(optional = false)
     @Column(name = "per_fecha_nacimiento", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date perFechaNacimiento;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 500)
     @Column(name = "per_direccion", nullable = false, length = 500)
     private String perDireccion;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 50)
     @Column(name = "per_telfono_fijo", nullable = false, length = 50)
     private String perTelfonoFijo;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 50)
     @Column(name = "per_telefono_movil", nullable = false, length = 50)
     private String perTelefonoMovil;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 45)
     @Column(name = "per_email", nullable = false, length = 45)
     private String perEmail;
+    
     @Basic(optional = false)
     @Column(name = "per_fecha_registro", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date perFechaRegistro;
+    
     @Basic(optional = false)
     @Column(name = "per_estado", nullable = false)
     private boolean perEstado;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
     private List<Capacitacion> capacitacionList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
     private List<CursoTitulacion> cursoTitulacionList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
     private List<Usuario> usuarioList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
     private List<PersonaCarrera> personaCarreraList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
     private List<ParticipantesProceso> participantesProcesoList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "perCodigo", fetch = FetchType.LAZY)
     private List<SeleccionTema> seleccionTemaList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
     private List<PersonaFacultad> personaFacultadList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
     private List<MovimientoProceso> movimientoProcesoList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
     private List<ComisionInvestigacion> comisionInvestigacionList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
     private List<Proceso> procesoList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
     private List<Experiencia> experienciaList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "perCodigo", fetch = FetchType.LAZY)
     private List<TemasTitulacion> temasTitulacionList;
+    
     @JoinColumn(name = "catalogo_nacionalidad", referencedColumnName = "cat_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Catalogo catalogoNacionalidad;
+    
     @JoinColumn(name = "catalogo_estado_civil", referencedColumnName = "cat_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Catalogo catalogoEstadoCivil;
+    
     @JoinColumn(name = "catalogo_genero", referencedColumnName = "cat_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Catalogo catalogoGenero;

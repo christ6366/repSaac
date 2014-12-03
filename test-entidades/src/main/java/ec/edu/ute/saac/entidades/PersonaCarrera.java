@@ -25,16 +25,20 @@ public class PersonaCarrera implements Serializable {
     @Basic(optional = false)
     @Column(name = "per_car_codigo", nullable = false)
     private Integer perCarCodigo;
+    
     @Basic(optional = false)
     @Column(name = "per_car_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date perCarFecha;
+    
     @JoinColumn(name = "persona", referencedColumnName = "per_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona persona;
+    
     @JoinColumn(name = "carrera", referencedColumnName = "car_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Carrera carrera;
+    
     @JoinColumn(name = "cargo", referencedColumnName = "crg_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Cargo cargo;

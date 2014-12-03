@@ -31,28 +31,36 @@ public class Experiencia implements Serializable {
     @Basic(optional = false)
     @Column(name = "exp_codigo", nullable = false)
     private Integer expCodigo;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "exp_institucion", nullable = false, length = 255)
     private String expInstitucion;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "exp_puesto", nullable = false, length = 255)
     private String expPuesto;
+    
+    
     @Basic(optional = false)
     @Column(name = "exp_fecha_desde", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date expFechaDesde;
+    
     @Basic(optional = false)
     @Column(name = "exp_fecha_hasta", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date expFechaHasta;
+    
     @Size(max = 500)
     @Column(name = "exp_actividades", length = 500)
     private String expActividades;
+    
     @JoinColumn(name = "persona", referencedColumnName = "per_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona persona;
+    
     @JoinColumn(name = "catalogo_area_trabajo", referencedColumnName = "cat_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Catalogo catalogoAreaTrabajo;

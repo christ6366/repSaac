@@ -28,17 +28,21 @@ public class Archivo implements Serializable {
     @Basic(optional = false)
     @Column(name = "arc_codigo", nullable = false)
     private Integer arcCodigo;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 500)
     @Column(name = "arc_url", nullable = false, length = 500)
     private String arcUrl;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "arc_descripcion", nullable = false, length = 255)
     private String arcDescripcion;
+    
     @Basic(optional = false)
     @Column(name = "arc_estado", nullable = false)
     private boolean arcEstado;
+    
     @JoinColumn(name = "proceso", referencedColumnName = "prc_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Proceso proceso;

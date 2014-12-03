@@ -29,22 +29,28 @@ public class MovimientoProceso implements Serializable {
     @Basic(optional = false)
     @Column(name = "mov_prc_codigo", nullable = false)
     private Integer movPrcCodigo;
+    
     @Basic(optional = false)
     @Column(name = "mov_prc_fecha_inicio", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date movPrcFechaInicio;
+    
     @Basic(optional = false)
     @Column(name = "mov_prc_fecha_fin", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date movPrcFechaFin;
+    
     @Basic(optional = false)
     @Column(name = "mov_prc_estado", nullable = false)
     private boolean movPrcEstado;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "movimientoProceso", fetch = FetchType.LAZY)
     private List<Revision> revisionList;
+    
     @JoinColumn(name = "proceso", referencedColumnName = "prc_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Proceso proceso;
+    
     @JoinColumn(name = "persona", referencedColumnName = "per_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona persona;

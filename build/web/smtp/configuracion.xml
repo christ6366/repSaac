@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parametros>
+    <serverMail>
+        <hostName>smtp.gmail.com</hostName>
+        <port>587</port>
+        <user>juanklafuente@gmail.com</user>
+        <password>Juan1711$$</password>
+        <from>juanklafuente@gmail.com</from>
+        <name>Sistema de Asistencia Academica</name>
+    </serverMail>
+</parametros>

@@ -31,34 +31,43 @@ public class Capacitacion implements Serializable {
     @Basic(optional = false)
     @Column(name = "cur_codigo", nullable = false)
     private Integer curCodigo;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 500)
     @Column(name = "cap_institucion", nullable = false, length = 500)
     private String capInstitucion;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "cap_nombre", nullable = false, length = 255)
     private String capNombre;
+    
     @Basic(optional = false)
     @Column(name = "cap_dias_horas", nullable = false)
     private int capDiasHoras;
+    
     @Basic(optional = false)
     @Column(name = "cap_fecha_inicio", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date capFechaInicio;
+    
     @Basic(optional = false)
     @Column(name = "cap_fecha_fin", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date capFechaFin;
+    
     @JoinColumn(name = "persona", referencedColumnName = "per_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona persona;
+    
     @JoinColumn(name = "catalogo_area_estudio", referencedColumnName = "cat_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Catalogo catalogoAreaEstudio;
+    
     @JoinColumn(name = "catalogo_tipo_certificado", referencedColumnName = "cat_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Catalogo catalogoTipoCertificado;
+    
     @JoinColumn(name = "catalogo_tipo_evento", referencedColumnName = "cat_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Catalogo catalogoTipoEvento;

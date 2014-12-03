@@ -28,31 +28,41 @@ public class Proceso implements Serializable {
     @Basic(optional = false)
     @Column(name = "prc_codigo", nullable = false)
     private Integer prcCodigo;
+    
     @Basic(optional = false)
     @Column(name = "prc_fecha_registro", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date prcFechaRegistro;
+    
     @Column(name = "prc_fecha_aprobacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date prcFechaAprobacion;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "proceso", fetch = FetchType.LAZY)
     private List<AprobacionProceso> aprobacionProcesoList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "proceso", fetch = FetchType.LAZY)
     private List<ParticipantesProceso> participantesProcesoList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "proceso", fetch = FetchType.LAZY)
     private List<MovimientoProceso> movimientoProcesoList;
+    
     @JoinColumn(name = "tipo_proceso", referencedColumnName = "tip_prc_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private TipoProceso tipoProceso;
+    
     @JoinColumn(name = "temas_titulacion", referencedColumnName = "tem_tit_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private TemasTitulacion temasTitulacion;
+    
     @JoinColumn(name = "persona", referencedColumnName = "per_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona persona;
+    
     @JoinColumn(name = "curso_titulacion", referencedColumnName = "cur_tit_codigo")
     @ManyToOne(fetch = FetchType.LAZY)
     private CursoTitulacion cursoTitulacion;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "proceso", fetch = FetchType.LAZY)
     private List<Archivo> archivoList;
 

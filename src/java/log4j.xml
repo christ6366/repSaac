@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+   
+    <appender name="consola" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <param name="Threshold" value="DEBUG"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c{1} - %m%n" />
+        </layout>
+    </appender>
+   
+    <appender name="fichero" class="org.apache.log4j.DailyRollingFileAppender">
+        <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler" />
+        <param name="File" value="./logs/saac.log" />
+        <param name="Append" value="false" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c{1} - %m%n" />
+        </layout>
+    </appender>
+    
+    <category name="ec.edu.ute">
+        <priority value="info" />
+    </category>
+    
+    <logger name="com.me.ApplicationLogger" additivity="false">
+        <appender-ref ref="fichero" />
+        <appender-ref ref="consola" />
+    </logger>
+    
+    <root>
+        <priority value="info" />
+        <appender-ref ref="fichero"/>
+        <appender-ref ref="consola"/>
+    </root>
+</log4j:configuration>
+

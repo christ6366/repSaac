@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:icecore="http://www.icefaces.org/icefaces/core"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition>
+        <ice:form id="temaNuevoForm" >
+            <ice:panelGroup styleClass="borderGray"  >
+                <center>
+                    <ice:panelGrid columns="3" columnClasses="col25,col50,col25" styleClass="borderGray" >
+
+                        <f:facet name="header" >
+                            <ice:outputLabel value="Temas de Trabajo de Titulacion " />
+                        </f:facet>
+
+                        <ice:outputLabel value="Carrera:" styleClass="label"/>
+                        <ice:selectOneMenu id="selCarrera1" style="width: 210px;"
+                                           required="true" requiredMessage="#{msg['campo.vacio']}"
+                                           title="Carrera">
+                            <f:selectItem itemLabel="--Seleccione--" itemValue="0"></f:selectItem>
+                            <f:selectItem itemLabel="Ing. Informática y Ciencias de la Computación" itemValue="1"></f:selectItem>
+                            <f:selectItem itemLabel="Ing. Mecatrónica" itemValue="2"></f:selectItem>
+                            <f:selectItem itemLabel="Ing. de Petróleos" itemValue="3"></f:selectItem>
+                        </ice:selectOneMenu>
+                        <ice:message for="selCarrera" errorClass="error"/>
+
+                        <ice:outputLabel value="Linea Investigación:" styleClass="label"/>
+                        <ice:selectOneMenu id="selLineaInvestigacion1" style="width: 210px;"
+                                           required="true" requiredMessage="#{msg['campo.vacio']}"
+                                           title="Linea de Investigación">
+                            <f:selectItem itemLabel="--Seleccione--" itemValue="0"></f:selectItem>
+                            <f:selectItem itemLabel="Inteligencia artificial" itemValue="1"></f:selectItem>
+                            <f:selectItem itemLabel="Procesamiento Datos" itemValue="2"></f:selectItem>
+                            <f:selectItem itemLabel="Desarrollo de Software" itemValue="3"></f:selectItem>
+                        </ice:selectOneMenu>
+                        <ice:message for="selLineaInvestigacion" errorClass="error"/>
+
+
+                        <ice:outputLabel value="Area Investigación:" styleClass="label"/>
+                        <ice:selectOneMenu id="selAreaInvestigación1" style="width: 210px;"
+                                           required="true" requiredMessage="#{msg['campo.vacio']}"
+                                           title="Carrera">
+                            <f:selectItem itemLabel="--Seleccione--" itemValue="0"></f:selectItem>
+                            <f:selectItem itemLabel="Software Libre" itemValue="1"></f:selectItem>
+                            <f:selectItem itemLabel="Sistemas Expertos" itemValue="2"></f:selectItem>
+                            <f:selectItem itemLabel="Redes Neuronales" itemValue="3"></f:selectItem>
+                        </ice:selectOneMenu>
+                        <ice:message for="selAreaInvestigacion" errorClass="error"/>
+
+
+                        <ice:outputLabel value="Tema:" styleClass="label"/>
+                        <ice:inputTextarea id="txtNombre" cols="60" rows="3" 
+                                           required="true" requiredMessage="#{msg['campo.vacio']}"/>
+                        <ice:message for="txtNombre" errorClass="error"/>
+
+                        <ice:outputLabel value="Sintesis del Tema:" styleClass="label"/>
+                        <ice:inputTextarea id="txtSintesis"  cols="60" rows="4" 
+                                           required="true" requiredMessage="#{msg['campo.vacio']}"/>
+                        <ice:message for="txtSintesis" errorClass="error"/>
+
+                    </ice:panelGrid>
+
+                    <center>
+                        <ice:commandButton value="Guardar" title="Guardar el registro"
+                                           panelConfirmation="confirmacionSeleccion"
+                                           action="#{docenteControlador.guardarUsuario()}" 
+                                           rendered="#{docenteControlador.persona.perCodigo == null}"/>
+                        <ice:commandButton value="Actualizar" title="Actualizar el registro"
+                                           panelConfirmation="confirmacionSeleccion"
+                                           action="#{docenteControlador.actualizarUsuario()}"
+                                           rendered="#{docenteControlador.persona.perCodigo != null}"/>
+                        <ice:panelConfirmation id="confirmacionSeleccion"
+                                               title="Confirmación"
+                                               message="Click 'Aceptar' si desea aprobar la acción realizada. Caso contrario click 'Cancelar' y revocar la acción realizada."
+                                               acceptLabel="Aceptar"
+                                               cancelLabel="Cancelar"
+                                               autoCentre="true"
+                                               type="normal"
+                                               rendered="true"/>  
+                    </center>
+                </center>
+            </ice:panelGroup>
+        </ice:form>
+    </ui:composition>
+</html>

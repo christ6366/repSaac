@@ -25,12 +25,15 @@ public class CursoTitulacion implements Serializable {
     @Basic(optional = false)
     @Column(name = "cur_tit_codigo", nullable = false)
     private Integer curTitCodigo;
+    
     @JoinColumn(name = "persona", referencedColumnName = "per_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona persona;
+    
     @JoinColumn(name = "periodos", referencedColumnName = "prd_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Periodos periodos;
+    
     @OneToMany(mappedBy = "cursoTitulacion", fetch = FetchType.LAZY)
     private List<Proceso> procesoList;
 

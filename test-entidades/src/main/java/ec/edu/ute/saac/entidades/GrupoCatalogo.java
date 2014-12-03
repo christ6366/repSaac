@@ -29,17 +29,21 @@ public class GrupoCatalogo implements Serializable {
     @Basic(optional = false)
     @Column(name = "grp_cat_codigo", nullable = false)
     private Integer grpCatCodigo;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "grp_cat_nemonico", nullable = false, length = 255)
     private String grpCatNemonico;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "grp_cat_valor", nullable = false, length = 255)
     private String grpCatValor;
+    
     @Basic(optional = false)
     @Column(name = "grp_cat_estado", nullable = false)
     private boolean grpCatEstado;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "grupoCatalogo", fetch = FetchType.LAZY)
     private List<Catalogo> catalogoList;
 

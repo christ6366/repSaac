@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:icecore="http://www.icefaces.org/icefaces/core"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition>
+        <ice:form id="estudianteNuevoForm" >
+            <icecore:singleSubmit />
+            <center>
+                <ice:panelGrid styleClass="borderGray"  style="text-align: center; min-width: 520px;" >
+                        <ice:panelGroup styleClass="titulosCenter">
+                            <ice:outputLabel value="Datos Personales " />
+                        </ice:panelGroup>
+                        <ice:panelGrid columns="3" columnClasses="col30,col40,col30" >
+                            <ice:outputLabel value="Documento de Identidad:" styleClass="label" />
+                            <ice:inputText id="txtDocumento" value="#{docenteControlador.persona.perDocumentoIdentidad}" 
+                                           required="true" requiredMessage="#{msg['campo.vacio']}" style="width: 200px;"/>
+                            <ice:message for="txtDocumento" errorClass="error"/>
+
+                            <ice:outputLabel value="Nombre:" styleClass="label"/>
+                            <ice:inputText id="txtNombre" value="#{docenteControlador.persona.perNombre}"
+                                           required="true" requiredMessage="#{msg['campo.vacio']}" style="width: 200px;"/>
+                            <ice:message for="txtNombre" errorClass="error"/>
+
+                            <ice:outputLabel value="Apellido:" styleClass="label"/>
+                            <ice:inputText id="txtApellido" value="#{docenteControlador.persona.perApellido}" 
+                                           required="true" requiredMessage="#{msg['campo.vacio']}" 
+                                           title="Apellido" style="width: 200px;"/>
+                            <ice:message for="txtApellido" errorClass="error"/>
+                        </ice:panelGrid>
+                        <ice:commandButton value="Guardar" title="Guardar el registro"
+                                           panelConfirmation="confirmacionSeleccion"
+                                           action="#{docenteControlador.guardarUsuario()}" 
+                                           rendered="#{docenteControlador.persona.perCodigo == null}"/>
+                        <ice:commandButton value="Eliminar" title="Elimina el registro"
+                                           panelConfirmation="confirmacionSeleccion"
+                                           action="#{docenteControlador.actualizarUsuario()}"
+                                           rendered="#{docenteControlador.persona.perCodigo != null}"/>
+                        <ice:panelConfirmation id="confirmacionSeleccion"
+                                               title="Confirmación"
+                                               message="Click 'Aceptar' si desea aprobar la acción realizada. Caso contrario click 'Cancelar' y revocar la acción realizada."
+                                               acceptLabel="Aceptar"
+                                               cancelLabel="Cancelar"
+                                               autoCentre="true"
+                                               type="normal"
+                                               rendered="true"/>  
+                </ice:panelGrid>
+            </center>
+        </ice:form>
+    </ui:composition>
+</html>

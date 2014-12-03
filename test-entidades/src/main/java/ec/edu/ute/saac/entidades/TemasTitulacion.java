@@ -29,22 +29,29 @@ public class TemasTitulacion implements Serializable {
     @Basic(optional = false)
     @Column(name = "tem_tit_codigo", nullable = false)
     private Integer temTitCodigo;
+    
     @Basic(optional = false)
     @Column(name = "tem_tit_nombre", nullable = false)
     private int temTitNombre;
+    
     @Size(max = 255)
     @Column(name = "tem_tit_descripcion", length = 255)
     private String temTitDescripcion;
+    
     @Basic(optional = false)
     @Column(name = "tem_tit_estado", nullable = false)
     private boolean temTitEstado;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "temInvCodigo", fetch = FetchType.LAZY)
     private List<SeleccionTema> seleccionTemaList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "temasTitulacion", fetch = FetchType.LAZY)
     private List<Proceso> procesoList;
+    
     @JoinColumn(name = "per_codigo", referencedColumnName = "per_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona perCodigo;
+    
     @JoinColumn(name = "area_investigacion", referencedColumnName = "are_inv_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private AreaInvestigacion areaInvestigacion;

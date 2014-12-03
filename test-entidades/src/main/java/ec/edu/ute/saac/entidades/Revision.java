@@ -27,13 +27,16 @@ public class Revision implements Serializable {
     @Basic(optional = false)
     @Column(name = "rev_codigo", nullable = false)
     private Integer revCodigo;
+    
     @Basic(optional = false)
     @Column(name = "rev_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date revFecha;
+    
     @JoinColumn(name = "movimiento_proceso", referencedColumnName = "mov_prc_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private MovimientoProceso movimientoProceso;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "revision", fetch = FetchType.LAZY)
     private List<Observacion> observacionList;
 

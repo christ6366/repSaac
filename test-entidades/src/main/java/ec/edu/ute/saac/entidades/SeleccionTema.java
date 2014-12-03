@@ -27,16 +27,20 @@ public class SeleccionTema implements Serializable {
     @Basic(optional = false)
     @Column(name = "sel_tem_codigo", nullable = false)
     private Integer selTemCodigo;
+    
     @Basic(optional = false)
     @Column(name = "sel_tem_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date selTemFecha;
+    
     @Basic(optional = false)
     @Column(name = "sel_tem_aprobacion", nullable = false)
     private boolean selTemAprobacion;
+    
     @JoinColumn(name = "tem_inv_codigo", referencedColumnName = "tem_tit_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private TemasTitulacion temInvCodigo;
+    
     @JoinColumn(name = "per_codigo", referencedColumnName = "per_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona perCodigo;

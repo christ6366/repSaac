@@ -1,0 +1,232 @@
+.Heading1{
+	font-family: arial;
+	font-size: 24px;
+	font-weight: bold;
+	color: #000000;
+}
+
+.Heading2{
+	font-family: arial;
+	font-size: 20px;
+	font-weight: bold;
+	color: #000000;
+}
+
+.Heading3{
+	font-family: arial;
+	font-size: 18px;
+	font-weight: bold;
+	color: #000000;
+}
+
+.Heading3_Italic{
+	font-family: arial;
+	font-size: 18px;
+	font-weight: bold;
+	font-style: italic;
+	color: #000000;
+}
+
+.DiagramType{
+	color: #000000;
+	font-family: arial;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0px, 0px, 0px, 0px;
+}
+
+.TableHeader{
+	background-color: #1569BC;
+	height: 20px;
+}
+
+.SubtableHeader{
+	background-color: #198FD8;
+	height: 20px;
+}
+
+.SubtableHeaderCenter{
+	background-color: #198FD8;
+	height: 20px;
+	text-align: center;
+}
+
+.TableHeaderText{
+	color: #FFFFFF;
+	font-family: arial;
+	font-size: 12px;
+	font-weight: bold;	
+}
+
+.TableContentText{
+	color: #000000;
+	font-family: arial;
+	font-size: 12px;	
+}
+
+.ItemLink{
+	color: #1C346B;
+	font-family: arial;
+	font-size: 12px;
+}
+
+.ItemLink{
+	color: #1C346B;
+	font-family: arial;
+	font-size: 12px;
+}
+
+.TableRow1{
+	background-color: #FFFFFF;
+	padding: 20px;
+
+}
+
+.TableRow2{
+	background-color: #F0F0F0;
+	padding: 20px;
+}
+
+.TableFooterLine{
+	background-color: #FFFFFF;
+	height: 1px;
+}
+
+.TableFooterLine1{
+	background-color: #808080;
+	height: 1px;
+}
+
+.TableHeaderLine{
+	background-color: #404040;
+	height: 1px;
+}
+
+.TableHeaderLine1{
+	background-color: #FFFFFF;
+	height: 1px;
+}
+
+.TableHeaderLine2{
+	background-color: #808080;
+	height: 1px;
+}
+
+.CandidateItem_Highlighted{
+	color: #000000;
+	background-color: #FFFF9B;
+	font-family: arial;
+	font-size: 12px;
+}
+
+.Image{
+	border: 1px solid #000000;
+	padding: 5px, 5px, 5px, 5px;
+}
+
+.IconSmall{
+	vertical-align:middle;
+}
+
+.BorderedTable{
+	border-width: 0 0 1px 1px;
+	border-style: solid;
+	border-spacing: 0;
+	border-collapse: collapse;
+	border-color: #000000;
+	width: 100%;
+}
+
+.CoverPageBorder{
+	border-color:#1569bc;
+	border-style: solid;
+	width: 100%;
+}
+
+
+.CoverPageImageToReportTitleSpan{
+	height: 150px;
+}
+
+.CoverPageEndingSpan{
+	height: 50px;
+}
+
+.CoverPageTopBorderToReportTitleSpan{
+	height: 200px;
+}
+
+.CoverPageReportTitleToOrganizationNameSpan{
+	height: 300px;
+}
+
+.CoverPageReportTitleUnderline{
+	text-align: center;
+	background-color: #1569bc;
+	height: 5px;
+	width: 200px;
+}
+
+.CoverPageLogoImage{
+	position:relative;
+	top:20px;
+	left:20px;
+}
+
+.CoverPageReportTitleText{
+	font-family:arial;
+	font-size:27px;
+	font-weight: bold;
+	color:#000000;
+}
+
+.CoverPageOrganizationNameText{
+	font-family:arial;
+	font-size:18px;
+	color:#000000;
+}
+
+.CoverPageAuthorText{
+	font-family:arial;
+	font-size:15px;
+	color:#000000;
+}
+
+.BorderedSubTable{
+	border-width: 0 0 1px 1px;
+  border-style: solid;
+	border-spacing: 0;
+	border-collapse: collapse;
+	border-color:#000000;
+}
+
+.TableCell{
+	padding: 3px;
+	border-width: 1px 1px 0 0;
+  border-style: solid;
+	border-color:#000000;
+	vertical-align: top;
+}
+
+.SectionSeparator1{
+	text-align: center;
+	background-color: #808080;
+	height: 1px;
+	width: 340px;
+}
+
+.SectionSeparator2{
+	text-align: center;
+	background-color: #4C4C4C;
+	height: 1px;
+	width: 340px;
+}
+
+.TOCTOFBorder{
+	border-width:1px;
+	border-style: solid;
+	border-color:#000000;
+	padding: 10px;
+	width: 50%
+}
+

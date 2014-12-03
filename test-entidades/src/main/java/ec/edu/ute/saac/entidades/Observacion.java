@@ -27,13 +27,16 @@ public class Observacion implements Serializable {
     @Basic(optional = false)
     @Column(name = "obs_codigo", nullable = false)
     private Integer obsCodigo;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 1000)
     @Column(name = "obs_descripcion", nullable = false, length = 1000)
     private String obsDescripcion;
+    
     @Basic(optional = false)
     @Column(name = "obs_estado", nullable = false)
     private boolean obsEstado;
+    
     @JoinColumn(name = "revision", referencedColumnName = "rev_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Revision revision;

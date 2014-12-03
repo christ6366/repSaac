@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Production</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>server</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>org.icefaces.mandatoryResourceConfiguration</param-name>
+        <param-value/>
+    </context-param>
+    <context-param>
+        <param-name>org.icefaces.ace.theme</param-name>
+        <param-value>sam</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>Resource Servlet</servlet-name>
+        <servlet-class>com.icesoft.faces.webapp.CompatResourceServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.jsf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/icefaces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Resource Servlet</servlet-name>
+        <url-pattern>/xmlhttp/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            180
+        </session-timeout>
+    </session-config>
+    <filter>
+        <filter-name>FiltroLogOut</filter-name>
+        <filter-class>ec.edu.ute.saac.filtro.FiltroLogOut</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FiltroLogOut</filter-name>
+        <url-pattern>/login.jsf</url-pattern>
+    </filter-mapping>
+    <welcome-file-list>
+        <welcome-file>index.jsf</welcome-file>
+    </welcome-file-list>
+    
+    <!--    /////////////////////////////////////////////   -->
+    <!--    //////////    SECURITY JDBCREALM   //////////   -->
+    <!--    /////////////////////////////////////////////   -->
+    
+    <!--login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>jdbcRealmSaac</realm-name>
+        <form-login-config>
+            <form-login-page>/login.jsf</form-login-page>
+            <form-error-page>/login.jsf?error=true</form-error-page>
+        </form-login-config>
+    </login-config-->
+    <error-page>
+        <error-code>401</error-code>
+        <location>/401.jsf</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/403.jsf</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsf</location>
+    </error-page>
+    
+<!--    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Admin user</web-resource-name>
+            <url-pattern>/pages/*</url-pattern>
+            <url-pattern>/index.jsf</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMIN</role-name>
+            <role-name>USER</role-name>
+        </auth-constraint>
+    </security-constraint>-->
+   
+    <!--security-constraint>
+        <display-name>Seccion usuario</display-name>
+        <web-resource-collection>
+            <web-resource-name>lo_mismo</web-resource-name>
+            <description/>
+            <url-pattern>/pages/*</url-pattern>
+            <url-pattern>/index.jsf</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>USUARIO</role-name>
+            <role-name>DECANO</role-name>
+            <role-name>SECRETARIA</role-name>
+            <role-name>COORDINADOR_CARRERA</role-name>
+            <role-name>TITULACION</role-name>
+            <role-name>INVESTIGACION</role-name>
+            <role-name>VINCULACION</role-name>
+            <role-name>DIRECTOR</role-name>
+            <role-name>DOCENTE</role-name>
+            <role-name>DOCENTE_PLAN</role-name>
+            <role-name>DOCENTE_PREAPROBADOR</role-name>
+            <role-name>DOCENTE_APROBADOR</role-name>
+            <role-name>DOCENTE_CALIFICADOR</role-name>
+            <role-name>DOCENTE_COM_INVESTIGACION</role-name>
+            <role-name>DOCENTE_COM_VINCULACION</role-name>
+            <role-name>DOCENTE_COM_SEGUIMIENTO</role-name>
+            <role-name>TUTOR_VINCULACION</role-name>
+            <role-name>DIRECTOR_VINCULACION</role-name>
+            <role-name>ESTUDIANTE</role-name>
+        </auth-constraint>
+    </security-constraint-->
+    
+<!--    <security-constraint>
+        <display-name>User user</display-name>
+        <web-resource-collection>
+            <web-resource-name>User</web-resource-name>
+            <url-pattern>/pages/*</url-pattern>
+            <url-pattern>/index.jsf</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            
+        </auth-constraint>
+    </security-constraint>-->
+    
+    
+    <!--security-role>
+        <description/>
+        <role-name>ADMIN</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>USUARIO</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>DECANO</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>SECRETARIA</role-name>
+    </security-role>  
+    <security-role>
+        <description/>
+        <role-name>COORDINADOR_CARRERA</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>TITULACION</role-name>
+    </security-role>    
+    <security-role>
+        <description/>
+        <role-name>INVESTIGACION</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>VINCULACION</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>DIRECTOR</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>DOCENTE</role-name>
+    </security-role>   
+    <security-role>
+        <description/>
+        <role-name>DOCENTE_PLAN</role-name>
+    </security-role>   
+    <security-role>
+        <description/>
+        <role-name>DOCENTE_PREAPROBADOR</role-name>
+    </security-role>   
+    <security-role>
+        <description/>
+        <role-name>DOCENTE_APROBADOR</role-name>
+    </security-role>   
+    <security-role>
+        <description/>
+        <role-name>DOCENTE_CALIFICADOR</role-name>
+    </security-role>   
+    <security-role>
+        <description/>
+        <role-name>DOCENTE_COM_INVESTIGACION</role-name>
+    </security-role>   
+    <security-role>
+        <description/>
+        <role-name>DOCENTE_COM_VINCULACION</role-name>
+    </security-role>     
+    <security-role>
+        <description/>
+        <role-name>DOCENTE_COM_SEGUIMIENTO</role-name>
+    </security-role>     
+    <security-role>
+        <description/>
+        <role-name>TUTOR_VINCULACION</role-name>
+    </security-role> 
+    <security-role>
+        <description/>
+        <role-name>DIRECTOR_VINCULACION</role-name>
+    </security-role> 
+    <security-role>
+        <description/>
+        <role-name>ESTUDIANTE</role-name>
+    </security-role-->   
+</web-app>
+

@@ -24,12 +24,15 @@ public class PersonaFacultad implements Serializable {
     @Basic(optional = false)
     @Column(name = "per_fac_codigo", nullable = false)
     private Integer perFacCodigo;
+    
     @JoinColumn(name = "persona", referencedColumnName = "per_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona persona;
+    
     @JoinColumn(name = "facultad", referencedColumnName = "fac_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Facultad facultad;
+    
     @JoinColumn(name = "cargo", referencedColumnName = "crg_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Cargo cargo;

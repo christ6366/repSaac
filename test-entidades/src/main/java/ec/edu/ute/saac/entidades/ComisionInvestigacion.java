@@ -28,14 +28,17 @@ public class ComisionInvestigacion implements Serializable {
     @NotNull
     @Column(name = "com_inv_codigo", nullable = false)
     private Integer comInvCodigo;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "com_inv_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date comInvFecha;
+    
     @JoinColumn(name = "persona", referencedColumnName = "per_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona persona;
+    
     @JoinColumn(name = "carrera", referencedColumnName = "car_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Carrera carrera;

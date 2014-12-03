@@ -28,16 +28,20 @@ public class Requerimiento implements Serializable {
     @Basic(optional = false)
     @Column(name = "req_codigo", nullable = false)
     private Integer reqCodigo;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 1000)
     @Column(name = "req_nombre", nullable = false, length = 1000)
     private String reqNombre;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 1000)
     @Column(name = "req_descripcion", nullable = false, length = 1000)
     private String reqDescripcion;
+    
     @Column(name = "req_estado")
     private Boolean reqEstado;
+    
     @JoinColumn(name = "tipo_proceso", referencedColumnName = "tip_prc_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private TipoProceso tipoProceso;

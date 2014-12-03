@@ -23,12 +23,13 @@ public class UsuarioRol implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-
     @Column(name = "usu_rol_codigo", nullable = false)
     private Integer usuRolCodigo;
+    
     @JoinColumn(name = "usuario", referencedColumnName = "usu_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuario;
+    
     @JoinColumn(name = "rol", referencedColumnName = "rol_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Rol rol;

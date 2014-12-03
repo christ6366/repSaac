@@ -29,18 +29,23 @@ public class TipoProceso implements Serializable {
     @Basic(optional = false)
     @Column(name = "tip_prc_codigo", nullable = false)
     private Integer tipPrcCodigo;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "tip_prc_nombre", nullable = false, length = 255)
     private String tipPrcNombre;
+    
     @Basic(optional = false)
     @Column(name = "tip_prc_estado", nullable = false)
     private boolean tipPrcEstado;
+    
     @Size(max = 255)
     @Column(name = "tip_prc_descripcion", length = 255)
     private String tipPrcDescripcion;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoProceso", fetch = FetchType.LAZY)
     private List<Requerimiento> requerimientoList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoProceso", fetch = FetchType.LAZY)
     private List<Proceso> procesoList;
 

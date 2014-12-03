@@ -49,38 +49,51 @@ public class Catalogo implements Serializable {
     @Basic(optional = false)
     @Column(name = "cat_codigo", nullable = false)
     private Integer catCodigo;
+    
     @Column(name = "cat_orden")
     private Integer catOrden;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "cat_nemonico", nullable = false, length = 255)
     private String catNemonico;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "cat_valor", nullable = false, length = 255)
     private String catValor;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "cat_descripcion", nullable = false, length = 255)
     private String catDescripcion;
+    
     @Basic(optional = false)
     @Column(name = "cat_estado", nullable = false)
     private boolean catEstado;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "catalogoAreaEstudio", fetch = FetchType.LAZY)
     private List<Capacitacion> capacitacionList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "catalogoTipoCertificado", fetch = FetchType.LAZY)
     private List<Capacitacion> capacitacionList1;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "catalogoTipoEvento", fetch = FetchType.LAZY)
     private List<Capacitacion> capacitacionList2;
+    
     @JoinColumn(name = "grupo_catalogo", referencedColumnName = "grp_cat_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private GrupoCatalogo grupoCatalogo;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "catalogoAreaTrabajo", fetch = FetchType.LAZY)
     private List<Experiencia> experienciaList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "catalogoNacionalidad", fetch = FetchType.LAZY)
     private List<Persona> personaList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "catalogoEstadoCivil", fetch = FetchType.LAZY)
     private List<Persona> personaList1;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "catalogoGenero", fetch = FetchType.LAZY)
     private List<Persona> personaList2;
 

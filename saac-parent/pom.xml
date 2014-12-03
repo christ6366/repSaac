@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ec.edu.ute.saac</groupId>
+	<artifactId>saac-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.hibernate.javax.persistence</groupId>
+				<artifactId>hibernate-jpa-2.0-api</artifactId>
+				<version>1.0.1.Final</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.icefaces</groupId>
+				<artifactId>icefaces-compat</artifactId>
+				<version>${icefaces.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.icefaces</groupId>
+				<artifactId>icefaces-ace</artifactId>
+				<version>${icefaces.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<properties>
+		<icefaces.version>3.0.1</icefaces.version>
+	</properties>
+	
+	<modules>
+		<module>../saac-ear</module>
+		<module>../saac-ejb</module>
+		<module>../saac-web</module>
+	</modules>
+</project>

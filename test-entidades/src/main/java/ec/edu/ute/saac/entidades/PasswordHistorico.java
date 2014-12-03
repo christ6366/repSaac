@@ -28,14 +28,17 @@ public class PasswordHistorico implements Serializable {
     @Basic(optional = false)
     @Column(name = "pas_his_codigo", nullable = false)
     private Integer pasHisCodigo;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "pas_anterior", nullable = false, length = 255)
     private String pasAnterior;
+    
     @Basic(optional = false)
     @Column(name = "pas_fecha_cambio", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date pasFechaCambio;
+    
     @JoinColumn(name = "usuario", referencedColumnName = "usu_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuario;

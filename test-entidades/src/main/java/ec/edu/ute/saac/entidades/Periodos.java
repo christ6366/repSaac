@@ -7,6 +7,7 @@ package ec.edu.ute.saac.entidades;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -29,21 +30,27 @@ public class Periodos implements Serializable {
     @Basic(optional = false)
     @Column(name = "prd_codigo", nullable = false)
     private Integer prdCodigo;
+    
     @Basic(optional = false)
     @Column(name = "prd_fecha_inicio", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date prdFechaInicio;
+    
     @Basic(optional = false)
     @Column(name = "prd_fecha_final", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date prdFechaFinal;
+    
     @Basic(optional = false)
     @Column(name = "prd_estado", nullable = false)
     private boolean prdEstado;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodos", fetch = FetchType.LAZY)
     private List<CursoTitulacion> cursoTitulacionList;
-
+    
+    
     public Periodos() {
+    
     }
 
     public Periodos(Integer prdCodigo) {

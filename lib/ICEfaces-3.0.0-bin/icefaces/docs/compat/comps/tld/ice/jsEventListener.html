@@ -1,0 +1,151 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>jsEventListener
+          (ICEfaces ICE Components 3.0.0. Tag Library Reference)
+        </title>
+<meta name="keywords" content="$title">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="jsEventListener (ICEfaces ICE Components 3.0.0. Tag Library Reference)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="jsEventListener.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>
+<font size="-1">ICE Components</font>
+<br>
+            Tag jsEventListener</h2>
+<hr><p>The jsEventListener component allows you to capture javascript events and optionally sends a notification to server and fire an action event.<p> <p> For example if you want to fire an action event in response of onchange event on the client. <pre> &lt;ice:jsEventListener events="change" actionListener="#{textFields.eventListener}"&gt; &lt;h:inputText /&gt; &lt;/ice:jsEventListener&gt; </pre> </p> <p> On server side you get the following parameters, that can helps to evaluate further on server side. <br/> <ul> <li>ice.event.target</li> <li>ice.event.captured</li> <li>ice.event.shift</li> <li>ice.event.keycode</li> <li>ice.event.type</li> <li>ice.focus</li> <li>ice.submit.partial</li> <li>ice.event.alt</li> <li>ice.event.ctrl</li> <li>ice.event.shift</li> <li>ice.event.meta</li> <li>ice.event.x</li> <li>ice.event.y</li> <li>ice.event.left</li> <li>ice.event.right</li> </ul> Note: Some of the above parameters are specific to the element type. So first you will have to check if the patameter is available in request map. </p> <p> Another example to use html input buttons to fire an action event and navigate to the page according to the choice. <pre> &lt;ice:jsEventListener events="click" action="#{bean.eventAction}"&gt; &lt;input type="button" id="continue" value="Continue"/&gt; &lt;input type="button" id="cancel" value="Cancel"/&gt; &lt;/ice:jsEventListener&gt; public String eventAction() { Map parameter = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap(); if ("continue".equals(parameter.get("ice.event.target"))) { return "continue"; }else if ("cancel".equals(parameter.get("ice.event.target"))) { return "cancel"; } return "noaction"; } </pre> <b>Note:</b> For above example navigation rule needs to be defined in faces-config.xml. </p> <p> <b>Event Filtering:</b> <br/> In above examples events was not filtered and you don't want to capture event like keydown without filtering it. To filter events you can defin a callback using handler attribute on the component. Let say if you are interested in only ESC key and Shift + N key: <pre> &lt;ice:jsEventListener events="keydown" handler="keydownFilter" actionListener="#{bean.doSomthing}"&gt; &lt;h:inputText /&gt; &lt;/ice:jsEventListener&gt; <br/> //now lets define keydownFilter &lt;script&gt; //this handler will be invoked by the ICEFaces along with the event //wrapped in the prototype's event. To find out what methods //available on event please see prototype event API. function keydownFilter(event) { var ESC = 27; var N = 78; switch(event.keyCode) { case ESC: //proceed and do a submit return true; case N: if(event.shiftKey) { //optionally stop bubbling if required Event.stop(event); //proceed and do a submit return true; } } //don't invoke a submit return false; } &lt;/script&gt; </pre> </p> You can capture more than one events using "," separated values (e.g) <pre> &lt;ice:jsEventListener events="keydown, keyup" handler="eventFilter" actionListener="#{bean.doSomthing}"> &lt;h:inputText /&gt; &lt;/ice:jsEventListener> </pre> As there is only one handler for both events, so you will have to check for the event.type to distigushe between them or if you want to use a separate handlers you can use nested jsEventListener component (e.g.) <pre> &lt;ice:jsEventListener events="keydown" handler="keydownFilter" actionListener="#{bean.doSomthing}"&gt; &lt;ice:jsEventListener events="keyup" handler="keyupFilter" actionListener="#{bean.doSomthing}"&gt; &lt;h:inputText /&gt; &lt;/ice:jsEventListener&gt; &lt;/ice:jsEventListener&gt; </pre> There can be many uses cases, please explore and let others know. <br/> <b>Note:</b> The ice:jsEventListener based on the event bubbling, so it can capture events as far as its children bubbling up the events.<br>
+<p></p>
+<hr>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
+</tr>
+<tr>
+<td>Tag Class</td><td>com.icesoft.faces.component.jseventlistener.JSEventListenerTag</td>
+</tr>
+<tr>
+<td>TagExtraInfo Class</td><td><i>None</i></td>
+</tr>
+<tr>
+<td>Body Content</td><td>JSP</td>
+</tr>
+<tr>
+<td>Display Name</td><td><i>None</i></td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Attributes</b></font></td>
+</tr>
+<tr>
+<td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
+</tr>
+<tr valign="top">
+<td>action</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>MethodBinding representing the application action to invoke when this component is activated by the user. The expression must evaluate to a either a String or a public method that takes no parameters, and returns a String (the logical outcome) which is passed to the NavigationHandler for this application.</td>
+</tr>
+<tr valign="top">
+<td>actionListener</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>MethodBinding representing an action listener method that will be notified when this component is activated by the user. The expression must evaluate to a public method that takes an ActionEvent parameter, with a return type of void.</td>
+</tr>
+<tr valign="top">
+<td>binding</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>The value binding expression linking this component to a property in a backing bean</td>
+</tr>
+<tr valign="top">
+<td>events</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>List of "," separated events (e.g) events="click[, keydown, ...]".</td>
+</tr>
+<tr valign="top">
+<td>handler</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>Its an optional attribute. Can be used to define a callback handlers for the events listed in "events" attribute(e.g.) <br/> &lt;ice:jsEventListener events="click" handler="myClickHandler"&gt;<br/> .... <br/><br/> &lt;ice:jsEventListener events="click, keydown" handler="myHandler"&gt;<br/> ....</td>
+</tr>
+<tr valign="top">
+<td>id</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>The component identifier for this component. This value must be unique within the closest parent component that is a naming container.</td>
+</tr>
+<tr valign="top">
+<td>immediate</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>Flag indicating that this component's value must be converted and validated immediately (that is, during Apply Request Values phase), rather than waiting until Process Validations phase.</td>
+</tr>
+<tr valign="top">
+<td>rendered</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>Flag indicating whether or not this component should be rendered (during Render Response Phase), or processed on any subsequent form submit.</td>
+</tr>
+<tr valign="top">
+<td>style</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>CSS style(s) to be applied when this component is rendered.</td>
+</tr>
+<tr valign="top">
+<td>styleClass</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>Space-separated list of CSS style class(es) to be applied when this element is rendered. This value must be passed through as the "class" attribute on generated markup. <br/></td>
+</tr>
+<tr valign="top">
+<td>value</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>The current value of this component.</td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Variables</b></font></td>
+</tr>
+<td colspan="2"><i>No Variables Defined.</i></td>
+</table>
+<br>
+<p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="jsEventListener.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Output Generated by 
+            <a href="http://taglibrarydoc.dev.java.net/" target="_blank">Tag Library Documentation Generator</a>.
+            Java, JSP, and JavaServer Pages are trademarks or 
+            registered trademarks of Sun Microsystems, Inc. in the US and other
+            countries.  Copyright 2002-4 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved. 
+            </i></small>
+</body>
+</html>

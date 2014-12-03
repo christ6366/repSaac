@@ -30,23 +30,30 @@ public class Carrera implements Serializable {
     @Basic(optional = false)
     @Column(name = "car_codigo", nullable = false)
     private Integer carCodigo;
+    
     @Basic(optional = false)
     @Size(min = 1, max = 255)
     @Column(name = "car_nombre", nullable = false, length = 255)
     private String carNombre;
+    
     @Size(max = 255)
     @Column(name = "car_descripcion", length = 255)
     private String carDescripcion;
+    
     @Basic(optional = false)
     @Column(name = "car_estado", nullable = false)
     private boolean carEstado;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "carrera", fetch = FetchType.LAZY)
     private List<PersonaCarrera> personaCarreraList;
+    
     @JoinColumn(name = "facultad", referencedColumnName = "fac_codigo", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Facultad facultad;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "carrera", fetch = FetchType.LAZY)
     private List<LineaInvestigacion> lineaInvestigacionList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "carrera", fetch = FetchType.LAZY)
     private List<ComisionInvestigacion> comisionInvestigacionList;
 
